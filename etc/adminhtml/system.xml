@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="agilelogics" translate="label" sortOrder="1">
+            <label>Agilelogics RabbitMQ Settings</label>
+        </tab>
+        <section id="agilelogics_customcatalog" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <label>AMQP</label>
+            <tab>agilelogics</tab>
+            <resource>Agilelogics_CustomCatalog::config</resource>
+            <group id="broker" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Broker</label>
+                <field id="host" translate="label, comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Host</label>
+                </field>
+                <field id="port" translate="label, comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Port</label>
+                </field>
+                <field id="user" translate="label, comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Username</label>
+                </field>
+                <field id="pass" translate="label, comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Password</label>
+                </field>
+                <field id="vhost" translate="label, comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Vhost</label>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

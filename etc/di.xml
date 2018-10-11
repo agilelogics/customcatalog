@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Agilelogics\CustomCatalog\Api\ProductManagementInterface" type="Agilelogics\CustomCatalog\Model\ProductManagement" />
+    <type name="Magento\Eav\Model\Entity\AttributeCache">
+        <arguments>
+            <argument name="unsupportedTypes" xsi:type="array">
+                <item name="agilelogics_products" xsi:type="string">agilelogics_products</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Agilelogics\CustomCatalog\UI\Component\Listing\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Agilelogics\CustomCatalog\Model\ResourceModel\Products\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">RefGridFilterPool</argument>
+        </arguments>
+    </type>
+    <virtualType name="RefGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="agilelogics_customcatalog_products_listing_data_source" xsi:type="string">Agilelogics\CustomCatalog\Model\ResourceModel\Products\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Agilelogics\CustomCatalog\Model\ResourceModel\Products\Grid\Collection">
+        <arguments>
+            <argument name="eventPrefix" xsi:type="string">agilelogics_customcatalog_products_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">agilelogics_customcatalog_products_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Agilelogics\CustomCatalog\Model\ResourceModel\Products</argument>
+        </arguments>
+    </type>
+    <!--type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="AgilelogicsAmqpCreateExchange" xsi:type="object">Agilelogics\Amqp\Console\Command\CreateExchangeCommand</item>
+                <item name="AgilelogicsAmqpSampleConsumer" xsi:type="object">Agilelogics\Amqp\Console\Command\SampleConsumerCommand</item>
+            </argument>
+        </arguments>
+    </type-->
+</config>
